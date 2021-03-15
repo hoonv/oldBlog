@@ -15,7 +15,7 @@
       <nav class="content-ul">
         {% for category in site.categories %}
         <a href="{{ root_url }}/{{ site.category_dir }}#{{ category | first }}"
-           class="sidebar-nav-item pl-3rem">
+           class="sidebar-nav-item pl-3rem"></a>
                               <span class="name">
                                   {{ category | first }}
                               </span>
@@ -24,7 +24,6 @@
         {% endfor %}
       </nav>
     </div>
-    <span class="sidebar-nav-item">Currently v{{ site.version }} | {{site.categories}}</span>
   </nav>
 
   <div class="sidebar-item">
