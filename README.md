@@ -1,152 +1,195 @@
-# [Start Bootstrap - Clean Blog Jekyll](https://startbootstrap.com/themes/clean-blog-jekyll/) - Official Jekyll Version
+# Monophase <!-- omit in toc -->
 
-[Clean Blog Jekyll](https://startbootstrap.com/themes/clean-blog-jekyll/) is a stylish, responsive blog theme for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/). This theme features a blog homepage, about page, contact page, and an example post page along with a working contact form powered by [Formspree](https://formspree.io/).
+Monophase is *a one-column minimal responsive Jekyll blog theme*.
 
-This repository holds the official Jekyll version of the Clean Blog theme on Start Bootstrap!
+One of the purposes of Monophase is to be an alternative option to the default theme of Jekyll—[Minima](https://github.com/jekyll/minima). Monophase is still keeping minimal, but meanwhile, more beautiful and mellow, and doesn't lose some useful basic features, such as archive.
 
-## Preview
+Check the *[live demo](https://zivlog.io/monophase/)*.
 
-[![Clean Blog (Jekyll) Preview](https://startbootstrap.com/assets/img/screenshots/themes/clean-blog-jekyll.png)](http://StartBootstrap.github.io/startbootstrap-clean-blog-jekyll/)
+![Screenshot Light](screenshot-light.png)
+![Screenshot Dark](screenshot-dark.png)
 
-**[View Live Preview](http://StartBootstrap.github.io/startbootstrap-clean-blog-jekyll/)**
+## Highlight Features <!-- omit in toc -->
 
-## Installation & Setup
+- [Normalize.css](https://github.com/necolas/normalize.css)
+- [Open Color](https://github.com/yeun/open-color)
+- [Font Awesome](https://fontawesome.com/)
+- [Disqus](https://disqus.com/)
+- [MathJax](https://www.mathjax.org/)
+- [Google Analytics 4](https://support.google.com/analytics/answer/10089681?hl=en)
+- [Jekyll Feed](https://github.com/jekyll/jekyll-feed/)
+- [Jekyll Paginate](https://github.com/jekyll/jekyll-paginate)
+- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag/)
+- Related posts (time-based, because Jekyll) below each post
+- Dark mode, via [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+- Archive implemented by pure [Liquid](https://shopify.github.io/liquid/)
 
-### Using RubyGems
+## Table of Contents <!-- omit in toc -->
 
-When installing the theme using RubyGems, demo images, posts, and pages are not included. Follow the instructions below for complete setup.
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Global Configuration](#global-configuration)
+  - [Post Configuration](#post-configuration)
+  - [Homepage](#homepage)
+  - [Custom Head](#custom-head)
+  - [Navigation](#navigation)
+  - [Social Links](#social-links)
+  - [Alert Messages](#alert-messages)
+  - [Alignment](#alignment)
+  - [Google Analytics 4](#google-analytics-4)
+  - [Archive](#archive)
+- [Contributing](#contributing)
+- [Development](#development)
+- [License](#license)
 
-1. (Optional) Create a new Jekyll site: `jekyll new my-site`
-2. Replace the current theme in your `Gemfile` with `gem "jekyll-theme-clean-blog"`.
-3. Install the theme (run the command inside your site directory): `bundle install`
-4. Replace the current theme in your `_config.yml` file with `theme: jekyll-theme-clean-blog`.
-5. Build your site: `bundle exec jekyll serve`
+## Installation
 
-Assuming there are no errors and the site is building properly, follow these steps next:
+Add this line to your Jekyll site's `Gemfile`:
 
-1. Create the following pages if they do not exist already (or change the extension of existing markdown files from `.md` to `.html`):
+```ruby
+gem "monophase"
+```
 
-   * `index.html` - set to `layout: home`
-   * `about.html` - set to `layout: page`
-   * `contact.html` - set to `layout: page`
-   * `posts/index.html` - set to `layout: page` (you will also need to create a `posts` directory)
+And add this line to your Jekyll site's `_config.yml`:
 
-2. Configure the `index.html` front matter. Example:
+```yaml
+theme: monophase
+```
 
-    ```markdown
-    ---
-    layout: home
-    background: '/PATH_TO_IMAGE'
-    ---
+And then execute:
+
+```shell
+bundle
+```
+
+Or install it yourself as:
+
+```shell
+gem install monophase
+```
+
+You can also install the latest code via [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme):
+
+1. Add this line to your Jekyll site's `Gemfile`:
+
+    ```ruby
+    gem "jekyll-remote-theme"
     ```
 
-3. Configure the `about.html`, `contact.html`, and `posts/index.html` front matter. Example:
+2. Add these lines to your Jekyll site's `_config.yml`:
 
-    ```markdown
-    ---
-    layout: page
-    title: Page Title
-    description: This is the page description.
-    background: '/PATH_TO_IMAGE'
-    ---
+    ```ruby
+    plugins:
+      - jekyll-remote-theme
+
+    remote_theme: zivhub/monophase@main
     ```
 
-4. For each post in the `_posts` directory, update the front matter. Example:
+## Usage
 
-    ```markdown
-    ---
-    layout: post
-    title: "Post Title"
-    subtitle: "This is the post subtitle."
-    date: YYYY-MM-DD HH:MM:SS
-    background: '/PATH_TO_IMAGE'
-    ---
-    ```
+### Global Configuration
 
-    For reference, look at the [demo repository](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll) to see how the files are set up.
+| Variable | Type | Default | Specification |
+| -------- | ---- | ------- | ------------- |
+| `title` | String | --- | The title of the website |
+| `tagline` | String | --- | The tagline of the website |
+| `lang` | String | `en` | The language of pages; The value can be overwritten by the `lang` variable on each page |
+| `author.name` | String | --- | The name of the website author |
+| `author.url` | String | --- | A URL of the website author |
+| `tags_path` | String | --- | A path to the archive-by-tags page; It is used by tags on each post |
+| `categories_path` | String | --- | A path to the archive-by-categories page; It is used by categories on each post |
+| `disqus` | String | --- | Disqus short name |
+| `google_analytics` | String | --- | Google Analytics 4 Measurement ID |
 
-5. Add the form to the `contact.html` page. Add the following code to your `contact.html` page:
+### Post Configuration
 
-    ```html
-    <form name="sentMessage" id="contactForm" novalidate>
-      <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-          <label>Name</label>
-          <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
-          <p class="help-block text-danger"></p>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-          <label>Email Address</label>
-          <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-          <p class="help-block text-danger"></p>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <label>Phone Number</label>
-          <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
-          <p class="help-block text-danger"></p>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-          <label>Message</label>
-          <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
-          <p class="help-block text-danger"></p>
-        </div>
-      </div>
-      <br>
-      <div id="success"></div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
-      </div>
-    </form>
-    ```
+| Variable | Type | Default | Specification |
+| -------- | ---- | ------- | ------------- |
+| `description` | String | --- | A description of the current post |
+| `last_modified_at` | String | --- | The date of the last modification you made on a post after its publishing |
+| `author` | String or Array | --- | The author name(s) of the post |
+| `comments` | Boolean | `true` | Does enable the Disqus comment system |
+| `math` | Boolean | `false` | Does enable MathJax on this page |
 
-    Make sure you have the `email` setting in your `_config.yml` file set to a working email address! Once this is set, fill out the form and then check your email, verify the email address using the link sent to you by Formspree, and then the form will be working!
+### Homepage
 
-6. Build your site: `bundle exec jekyll serve`
+You can create a homepage for your blog by setting `layout: home` in your `index.html`.
 
-### Using Core Files
+### Custom Head
 
-When using the core files, the demo images, posts, and pages are all included with the download. After following the instructions below, you can then go and change the content of the pages and posts.
+Monophase leaves a placeholder to allow defining custom head. All you need to do is putting data into `_includes/custom-head.html`, and they would be automatically included in `<head>`.
 
-1. [Download](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/archive/master.zip) or Clone the repository.
-2. Update the following configuration settings in your `_config.yml` file:
-   - `baseurl`
-   - `url`
-   - `title`
-   - `email` (after setting this setting to a working email address, fill out the form on the contact page and send it - then check your email and verify the address and the form will send you messages when used)
-   - `description`
-   - `author`
-   - `twitter_username` (Optional)
-   - `facebook_username` (Optional)
-   - `github_username` (Optional)
-   - `linkedin_username` (Optional)
-   - `instagram_username` (Optional)
-3. Build your site: `bundle exec jekyll serve`
+### Navigation
 
-## Bugs and Issues
+The navigation bar of Monophase is configurable. You just need to specify titles and URLs in the file `_data/navigation.yml`, for example,
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/issues) here on GitHub!
+```yml
+- title: About
+  url: /about/
+- title: Archive
+  url: /archive/
+- title: Categories
+  url: /categories/
+```
 
-## About
+### Social Links
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+Monophase allows you to show social links on the website. All you need to do is creating a file `_data/social.yml`, for example,
 
-* <https://startbootstrap.com>
-* <https://twitter.com/SBootstrap>
+```yml
+- title: Email
+  url: mailto:zivmsg@gmail.com
+  icon: fas fa-envelope
+- title: Twitter
+  url: https://twitter.com/zivtwt
+  icon: fab fa-twitter
+- title: GitHub
+  url: https://github.com/zivhub
+  icon: fab fa-github
+```
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**.
+### Alert Messages
 
-* <http://davidmiller.io>
-* <https://twitter.com/davidmillerskt>
-* <https://github.com/davidtmiller>
+Monophase provides some predefined classes to specify different levels of **alert messages**. In order of tone from light to heavy, they are: `message-info`, `message-warning`, and `message-danger`. You may add it to single elements like a `<p>`, or to a parent if there are multiple elements to show.
 
-Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+### Alignment
 
-## Copyright and License
+Monophase also provides some predefined classes to specify the alignment of HTML elements—e.g. images. They are `align-center`, `align-left`, and `align-right`.
 
-Copyright 2013-2020 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/blob/gh-pages/LICENSE) license.
+### Google Analytics 4
+
+To enable [Google Analytics 4](https://support.google.com/analytics/answer/10089681?hl=en), you just need to set the [Measurement ID](https://support.google.com/analytics/answer/7372977?hl=en) in your `_config.yml`, for example,
+
+```yml
+google_analytics: G-XXXXXXX
+```
+
+### Archive
+
+Monophase provides some built-in archive pages. It is implemented in pure Liquid. If you want to archive posts by years, you can create a page and put these code in it:
+
+```yml
+---
+layout: archive
+type: years
+---
+```
+
+Similarly, if you want to archive posts by categories or tags, you can set the `type` property as `categories` or `tags`.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at [https://github.com/zivhub/monophase](https://github.com/zivhub/monophase). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Development
+
+To set up your environment to develop this theme, run `bundle install`.
+
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `monophase.gemspec` accordingly.
+
+## License
+
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

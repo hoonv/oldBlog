@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  {% include head.html %}
+  <body>
+    <div class="container">
+      {% include header.html %}
 
-<html>
+      <main>
+        {{ content }}
+      </main>
 
-{% include head.html %}
+      {% include footer.html %}
+    </div>
 
-<body>
+    {% if page.math %}
+      {% include mathjax.html %}
+    {% endif %}
 
-  {% include navbar.html %}
-
-  {{ content }}
-
-  {% include footer.html %}
-
-  {% include scripts.html %}
-
-  {% include google-analytics.html %}
-
-</body>
-
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+  </body>
 </html>
