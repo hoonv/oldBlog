@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Combine 알아보기"
-date:   2021-08-05 22:45:14 +0900
+date:   2021-08-07 08:45:14 +0900
 categories: Swift
 ---
 ### 소개
@@ -28,4 +28,38 @@ URLSession.shared.dataTask(with: URL,
 실행시키는 방법으로 진행됩니다.
 Combine은 이 비동기 처리를 선언적인 방법으로 깔끔하게 관리 하게 해주는 Framework입니다. 앞에서 잠깐 설명 드렸지만 Combine이 등장하기 전까지
 NotificationCenter, Closure Callback, GCD등 비동기를 처리하는 많은 방법들이 있었지만 이것을 `Combine`이 통합하여 관리할 수 있게 되었습니다.
+
+
+``` swift
+//
+//  ContentView.swift
+//  studyCharView
+//
+//  Created by 채훈기 on 2021/08/13.
+//
+
+import SwiftUI
+import SwiftUICharts
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Hello, world!")
+                .padding()
+            LineChartView(data: [1,2,3,4,5], title: "test")
+            LineView(data: [1,2,1,2,3,4,1])
+
+            BarChartView(data: ChartData(numberValues: [(1,1),(2,2)]), title: "dd")
+        }
+
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+```
 
