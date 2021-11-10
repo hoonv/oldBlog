@@ -2,7 +2,7 @@
 layout: post
 title:  "SwiftUI - View"
 date:   2021-08-10 10:45:14 +0900
-categories: SwiftUI
+categories: Swift
 ---
 SwiftUI를 시작하는데 있어서 새로 알아야 할 것이 많죠~ 가장 기본이 되는 View부터 살펴보려 합니다. Apple의 정의부터 한번 보고 가실까요? 
 

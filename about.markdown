@@ -4,6 +4,9 @@ title: About
 permalink: /about/
 ---
 
+안녕하세요 채훈기 입니다.
+방문해 주셔서 감사합니다.
+
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
 You can find the source code for Minima at GitHub:

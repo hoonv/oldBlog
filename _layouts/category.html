@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div>
+    {% for category in site.categories %}
+    <div>
+        <h2><a class="title" href="{{ category | first | downcase }}">{{category | first}}</a></h2>
+        <ul>
+        {% for posts in category %}
+        {% for post in posts %}
+        {% if post.url %}
+        <li>
+            <time>
+            {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
+            </time>
+            <a class="title" href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </ul>
+        {% endfor %}
+
+    </div>
+</div>
