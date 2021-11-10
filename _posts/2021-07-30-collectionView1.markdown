@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "CollectionView layout"
+title:  "CollectionView 알아보기"
 date:   2021-07-30 08:45:14 +0900
 categories: Swift
 ---
