@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "CollectionView 관철하기"
+title:  "CollectionView layout"
 date:   2021-07-30 08:45:14 +0900
 categories: Swift
 ---
