@@ -6,6 +6,8 @@ categories: Swift
 ---
 CollectionView 관철하기 2번째 포스팅입니다. CollectionView에 대해 공부하다 보니 글을 쓰면서도 아 이거는 따로 또 써야겠다 싶었던 토픽들을 하나씩 다룰 예정입니다 😃 이번에는 Layout에 대해 조금 더 자세히 알아보고 싶은데요, 이번에는 조금 실제로 구현을 해보며 Layout을 알아가려 합니다.
 CollectionView는 Flow Layout을 사용하잖아요, 이 layout이 한줄을 쫙 채우죠?
+
+<br/>
 <p align="center"><img src="https://user-images.githubusercontent.com/46335714/129883666-f44f40f8-eac0-45f9-8a81-8221b7e693dc.png" width="75%"></p>
 이런식으로 한줄을 넘어갈때는 그 줄을 꽉 채우고 넘어가게 됩니다. 이게 의도할 수도 있지만 보통 Cell간에 간격이 일정하지 않아 보기에 이뻐 보이지 않습니다. 보통 Tag들을 표현할때는 아래 사진과 같이 왼쪽으로 정렬해서 표현합니다. 더 가지런해 보이고 정돈되어 보이죠 ㅎㅎ
 

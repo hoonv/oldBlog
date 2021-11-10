@@ -54,12 +54,12 @@
 
     &:hover,
     &:focus {
-      text-decoration: line-through;
+      text-decoration: underline;
     }
   }
 
   a.current {
-    text-decoration: line-through;
+    text-decoration: underline;
   }
 }
 
