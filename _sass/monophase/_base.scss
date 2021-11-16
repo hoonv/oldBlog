@@ -62,8 +62,9 @@ pre {
 
 code {
   padding: .1em .25em;
-  background-color: var(--code-bg-color);
   border-radius: var(--border-radius);
+  color: rgb(184, 14, 61);
+  font-weight: bold;
 }
 
 pre {
