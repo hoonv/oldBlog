@@ -18,21 +18,22 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Fun하지만 뻔하지않게
-email: chaehk95@naver.com
-description: hoonv
+title: 개발 노트
+email: hoonvelop@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  hoonv의 개발 노트입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://hoonv.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
 github_username:  hoonv
 permalink: /:categories/:title
+
 # Build settings
-theme: monophase
+theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-
 
 # Exclude from processing.
 # The following items will not be processed, by default.
