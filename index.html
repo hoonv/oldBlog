@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>훈기와 현주의 모바일 청첩장</title>
+    <title>이미지 갤러리</title>
     <style>
         body {
             margin: 0;
@@ -13,9 +14,20 @@
             background-color: #f2f2f2;
         }
 
+        @media (max-width: 600px) {
+            .gallery {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .gallery {
+                width: 600px;
+            }
+        }
+
         .gallery {
-            max-width: 800px;
-            width: 100%;
+            width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,34 +37,152 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            margin-bottom: 20px;
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
+        }
+
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-container.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .popup-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .popup-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            z-index: 10000;
+        }
+
+        .popup-nav button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            outline: none;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imageContainers = document.querySelectorAll('.image-container');
+            const popupContainer = document.querySelector('.popup-container');
+            const popupImage = document.querySelector('.popup-image');
+            const prevButton = document.querySelector('.popup-nav .prev');
+            const nextButton = document.querySelector('.popup-nav .next');
+
+            let currentIndex = 0;
+
+            // 이미지 클릭 시 팝업 열기
+            imageContainers.forEach(function (container, index) {
+                container.addEventListener('click', function () {
+                    currentIndex = index;
+                    showPopup();
+                });
+            });
+
+            // 팝업 닫기
+            popupContainer.addEventListener('click', function () {
+                hidePopup();
+            });
+
+            // 이전 이미지 버튼 클릭 시
+            prevButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                prevImage();
+            });
+
+            // 다음 이미지 버튼 클릭 시
+            nextButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                nextImage();
+            });
+
+            // 팝업 보이기
+            function showPopup() {
+                popupContainer.classList.add('show');
+                popupImage.src = imageContainers[currentIndex].querySelector('img').src;
+            }
+
+            // 팝업 숨기기
+            function hidePopup() {
+                popupContainer.classList.remove('show');
+            }
+
+            // 다음 이미지 보기
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % imageContainers.length;
+                popupImage.src = imageContainers[currentIndex].querySelector('img').src;
+            }
+
+            // 이전 이미지 보기
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + imageContainers.length) % imageContainers.length;
+                popupImage.src = imageContainers[currentIndex].querySelector('img').src;
+            }
+        });
+    </script>
 </head>
+
 <body>
     <div class="gallery">
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 1">
+            <img src="./img/image1.jpeg" alt="Image 1">
         </div>
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 2">
+            <img src="./img/image2.jpeg" alt="Image 2">
         </div>
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 3">
+            <img src="./img/image1.jpeg" alt="Image 3">
         </div>
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 4">
+            <img src="./img/image2.jpeg" alt="Image 4">
         </div>
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 5">
+            <img src="./img/image1.jpeg" alt="Image 5">
         </div>
         <div class="image-container">
-            <img src="img/image1.jpeg" alt="Image 6">
+            <img src="./img/image2.jpeg" alt="Image 6">
         </div>
     </div>
+
+    <div class="popup-container">
+        <div class="popup-nav">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <img class="popup-image" src="" alt="Popup Image">
+    </div>
 </body>
+
 </html>
