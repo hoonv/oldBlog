@@ -23,6 +23,9 @@
             .image-grid-container {
                 width: 100%;
             }
+            .map-container {
+                width: 100%;
+            }
         }
 
         @media (min-width: 600px) {
@@ -30,6 +33,9 @@
                 width: 600px;
             }
             .image-grid-container {
+                width: 600px;
+            }
+            .map-container {
                 width: 600px;
             }
         }
@@ -45,6 +51,13 @@
             flex-direction: column;
             align-items: center;
             margin-top: 10px;
+        }
+
+        .map-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            aspect-ratio: 2;
         }
 
         .image-grid {
@@ -182,7 +195,10 @@
                 popupImage.src = imageContainers[currentIndex].querySelector('img').src;
             }
         });
+        
     </script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=pcrt3wheto"></script>
+
 </head>
 
 <body>
@@ -236,6 +252,22 @@
         </div>
         <img class="popup-image" src="" alt="Popup Image">
     </div>
+    <div class="map-container">
+        <div id="map" style="width:100%;height:100%;"></div>
+    </div>
+
+    <script>
+        var position = new naver.maps.LatLng(37.5407309, 127.0714632);
+        var mapOptions = {
+            center: position,
+            zoom: 17
+        };
+        var map = new naver.maps.Map('map', mapOptions);
+        var marker = new naver.maps.Marker({
+            position: position,
+            map: map
+        });
+        </script>
 </body>
 
 </html>
