@@ -11,6 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100%;
             background-color: #f2f2f2;
         }
@@ -19,10 +20,16 @@
             .gallery {
                 width: 100%;
             }
+            .image-grid-container {
+                width: 100%;
+            }
         }
 
         @media (min-width: 600px) {
             .gallery {
+                width: 600px;
+            }
+            .image-grid-container {
                 width: 600px;
             }
         }
@@ -33,6 +40,26 @@
             align-items: center;
         }
 
+        .image-grid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 1;
+            border-radius: 10px;
+        }
+
         .image-container {
             width: 100%;
             display: flex;
@@ -40,6 +67,11 @@
         }
 
         .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image-container-selectable img {
             max-width: 100%;
             height: auto;
             cursor: pointer;
@@ -86,7 +118,7 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 24px;
+            font-size: 36px;
             cursor: pointer;
             padding: 10px;
             outline: none;
@@ -94,7 +126,7 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const imageContainers = document.querySelectorAll('.image-container');
+            const imageContainers = document.querySelectorAll('.image-container-selectable');
             const popupContainer = document.querySelector('.popup-container');
             const popupImage = document.querySelector('.popup-image');
             const prevButton = document.querySelector('.popup-nav .prev');
@@ -156,25 +188,47 @@
 <body>
     <div class="gallery">
         <div class="image-container">
-            <img src="./img/image1.jpeg" alt="Image 1">
+            <img loading="lazy" src="./img/background1.png" alt="Image 1">
         </div>
         <div class="image-container">
-            <img src="./img/image2.jpeg" alt="Image 2">
+            <img loading="lazy" src="./img/background2.png" alt="Image 2">
         </div>
         <div class="image-container">
-            <img src="./img/image1.jpeg" alt="Image 3">
+            <img loading="lazy" src="./img/background3.png" alt="Image 3">
         </div>
         <div class="image-container">
-            <img src="./img/image2.jpeg" alt="Image 4">
+            <img loading="lazy" src="./img/background4.png" alt="Image 4">
         </div>
         <div class="image-container">
-            <img src="./img/image1.jpeg" alt="Image 5">
+            <img loading="lazy" src="./img/background5.png" alt="Image 5">
         </div>
         <div class="image-container">
-            <img src="./img/image2.jpeg" alt="Image 6">
+            <img loading="lazy" src="./img/background6.png" alt="Image 6">
         </div>
     </div>
+    <div class="image-grid-container">
+        <div class="image-grid">
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/image1.jpeg" alt="Image 1">
+            </div>
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/image2.jpeg" alt="Image 2">
+            </div>
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/background3.png" alt="Image 3">
+            </div>
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/background4.png" alt="Image 4">
+            </div>
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/background5.png" alt="Image 5">
+            </div>
+            <div class="image-container-selectable">
+                <img loading="lazy" src="./img/background6.png" alt="Image 6">
+            </div>
 
+        </div>
+    </div>
     <div class="popup-container">
         <div class="popup-nav">
             <button class="prev">&#10094;</button>
